@@ -11,8 +11,8 @@ export default {
     Footer,
   },
 };
-
 </script>
+
 <template>
   <div id="app">
     <Header />

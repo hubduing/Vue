@@ -5,8 +5,18 @@
       <input type="date" v-model="dateSearch" placeholder="Search by date" />
       <button @click="sortByDate">Sort by Date</button>
     </div>
+    <div>
+      <input v-model="newCardName" placeholder="Card Name" />
+      <input type="date" v-model="newCardDate" placeholder="Card Date" />
+      <button @click="addCard">Add Card</button>
+    </div>
     <div class="card-list">
-      <Card v-for="card in filteredCards" :key="card.id" :card="card" />
+      <Card 
+        v-for="card in filteredCards" 
+        :key="card.id" 
+        :card="card" 
+        @remove="removeCard(card.id)" 
+      />
     </div>
   </div>
 </template>
@@ -23,6 +33,9 @@ export default {
     return {
       search: '',
       dateSearch: '',
+      newCardName: '',
+      newCardDate: '',
+      nextId: 4, // Начинаем с 4, так как у нас уже есть 3 карточки
       cards: [
         { id: 1, name: 'Card 1', date: '2024-01-01' },
         { id: 2, name: 'Card 3', date: '2026-03-01' },
@@ -42,6 +55,22 @@ export default {
   methods: {
     sortByDate() {
       this.cards.sort((a, b) => new Date(a.date) - new Date(b.date));
+    },
+    addCard() {
+      if (this.newCardName && this.newCardDate) {
+        this.cards.push({
+          id: this.nextId++,
+          name: this.newCardName,
+          date: this.newCardDate,
+        });
+        this.newCardName = '';
+        this.newCardDate = '';
+      } else {
+        alert('Please fill in both fields.');
+      }
+    },
+    removeCard(id) {
+      this.cards = this.cards.filter(card => card.id !== id);
     },
   },
 };

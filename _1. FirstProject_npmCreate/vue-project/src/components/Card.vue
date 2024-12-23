@@ -1,7 +1,8 @@
 <template>
   <div class="card">
-    <h2>{{ card.name }}</h2>
-    <p>Date: {{ card.date }}</p>
+    <h3>{{ card.name }}</h3>
+    <p>{{ card.date }}</p>
+    <button @click="$emit('remove')" class="remove-button">Remove</button>
   </div>
 </template>
 
@@ -17,9 +18,18 @@ export default {
 <style scoped>
 .card {
   border: 1px solid #ccc;
-  border-radius: 5px;
   padding: 10px;
   margin: 10px;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remove-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 </style>
