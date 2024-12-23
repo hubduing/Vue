@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div>
+    <div class="controls">
       <input v-model="search" placeholder="Search by name" />
       <input type="date" v-model="dateSearch" placeholder="Search by date" />
       <button @click="sortByDate">Sort by Date</button>
     </div>
-    <div>
+    <div class="new-card-controls">
       <input v-model="newCardName" placeholder="Card Name" />
       <input type="date" v-model="newCardDate" placeholder="Card Date" />
       <button @click="addCard">Add Card</button>
@@ -35,7 +35,7 @@ export default {
       dateSearch: '',
       newCardName: '',
       newCardDate: '',
-      nextId: 4, // Начинаем с 4, так как у нас уже есть 3 карточки
+      nextId: 4,
       cards: [
         { id: 1, name: 'Card 1', date: '2024-01-01' },
         { id: 2, name: 'Card 3', date: '2026-03-01' },
@@ -81,5 +81,44 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+.controls, .new-card-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex: 1;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.new-card-controls {
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 100%; /* Ширина карточки 100% на мобильных */
+  }
+
+  .controls, .new-card-controls {
+    flex-direction: column; /* Вертикальное размещение на мобильных */
+  }
+
+  input {
+    margin: 5px 0; /* Уменьшаем отступы между полями */
+  }
 }
 </style>

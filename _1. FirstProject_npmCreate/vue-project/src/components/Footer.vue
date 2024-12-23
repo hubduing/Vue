@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <p>&copy; 2024 My first project with Vue</p>
+    <p>© 2024 Card Project. All rights reserved.</p>
   </footer>
 </template>
 
@@ -12,10 +12,10 @@ export default {
 
 <style scoped>
 footer {
-  background-color: #333;
+  background-color: #42b983;
   color: white;
+  padding: 20px;
   text-align: center;
-  padding: 10px;
   position: relative;
   bottom: 0;
   width: 100%;
